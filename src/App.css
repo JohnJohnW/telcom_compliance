@@ -22,9 +22,10 @@ body {
 
 .header {
   background: #1e1e1e;
-  padding: 20px;
+  padding: 20px 20px 20px 60px; /* Padding to accommodate the button on the left */
   color: white;
   text-align: center;
+  position: relative; /* Position relative to allow absolute positioning of child elements */
 }
 
 .header h1 {
@@ -32,6 +33,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2rem;
+  margin: 0;
 }
 
 .main {
@@ -39,10 +41,35 @@ body {
   flex: 1;
 }
 
+.toggle-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
 .sidebar {
   width: 250px;
   background-color: #1e1e1e;
-  padding: 20px;
+  padding: 60px 20px 20px 20px; /* Padding to add space for the button at the top */
+  overflow-y: auto;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.sidebar.open {
+  transform: translateX(300px);
 }
 
 .sidebar ul {
@@ -69,12 +96,16 @@ body {
   border-radius: 5px;
 }
 
-.content {
+.content-wrapper {
   flex: 1;
   padding: 20px;
-  padding-left: 40px; /* Padding to separate content from the sidebar */
-  padding-right: 40px; /* Padding to separate content from the right edge */
+  margin-left: 0;
   overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+.content-wrapper.shifted {
+  margin-left: 250px; /* Shift content right when sidebar is open */
 }
 
 h2 {
@@ -115,7 +146,7 @@ form label {
   color: #e0e0e0;
 }
 
-form input[type="checkbox"] {
+form input[type='checkbox'] {
   margin-right: 10px;
 }
 
@@ -177,4 +208,20 @@ form button:hover {
   margin-bottom: 10px;
   font-size: 1.1rem;
   color: #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -300px;
+    transform: translateX(0);
+  }
+
+  .sidebar.open {
+    transform: translateX(300px);
+  }
+
+  .content-wrapper.shifted {
+    margin-left: 0; /* No shift needed on mobile when sidebar is open */
+  }
 }

@@ -1,3 +1,5 @@
+// Sidebar.js
+
 import React from 'react';
 
 const sections = [
@@ -18,14 +20,17 @@ const sections = [
   'Protection of Submarine Cables',
 ];
 
-function Sidebar({ selectedSection, setSelectedSection }) {
+function Sidebar({ selectedSection, setSelectedSection, isOpen, toggleSidebar }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <ul>
-        {sections.map(section => (
-          <li 
-            key={section} 
-            onClick={() => setSelectedSection(section)}
+        {sections.map((section) => (
+          <li
+            key={section}
+            onClick={() => {
+              setSelectedSection(section);
+              toggleSidebar(); // Close the sidebar after selection
+            }}
             className={selectedSection === section ? 'selected' : ''}
           >
             {section}
