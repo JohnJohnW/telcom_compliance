@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/JohnJohnW/telcom_compliance.git/static/css/main.a7719763.css",
+    "main.js": "/JohnJohnW/telcom_compliance.git/static/js/main.6a7ef5f8.js",
+    "index.html": "/JohnJohnW/telcom_compliance.git/index.html",
+    "main.a7719763.css.map": "/JohnJohnW/telcom_compliance.git/static/css/main.a7719763.css.map",
+    "main.6a7ef5f8.js.map": "/JohnJohnW/telcom_compliance.git/static/js/main.6a7ef5f8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7719763.css",
+    "static/js/main.6a7ef5f8.js"
+  ]
+}
