@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/telcom_compliance/static/css/main.a7719763.css",
-    "main.js": "/telcom_compliance/static/js/main.6a7ef5f8.js",
+    "main.css": "/telcom_compliance/static/css/main.207f20af.css",
+    "main.js": "/telcom_compliance/static/js/main.3c3ac50a.js",
     "index.html": "/telcom_compliance/index.html",
-    "main.a7719763.css.map": "/telcom_compliance/static/css/main.a7719763.css.map",
-    "main.6a7ef5f8.js.map": "/telcom_compliance/static/js/main.6a7ef5f8.js.map"
+    "main.207f20af.css.map": "/telcom_compliance/static/css/main.207f20af.css.map",
+    "main.3c3ac50a.js.map": "/telcom_compliance/static/js/main.3c3ac50a.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7719763.css",
-    "static/js/main.6a7ef5f8.js"
+    "static/css/main.207f20af.css",
+    "static/js/main.3c3ac50a.js"
   ]
 }
