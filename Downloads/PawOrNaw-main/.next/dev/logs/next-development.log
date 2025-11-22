@@ -27,3 +27,4 @@
 [00:03:25.018] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/john/Downloads/PawOrNaw-main/src/app'
 [00:03:25.037] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/john/Downloads/PawOrNaw-main/src/app'
 [00:03:25.039] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/john/Downloads/PawOrNaw-main/src/app'
+[00:03:43.076] Server  LOG      ✓ Compiled in 18.4s
