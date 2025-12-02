@@ -1,0 +1,343 @@
+/* ==========================================================================
+   DESIGN TOKENS - QUT LITS Design System
+   ========================================================================== */
+
+/* ==========================================================================
+   LIQUID GLASS TOKENS (Apple HIG Materials)
+   ========================================================================== */
+
+:root {
+  /* Liquid Glass Core Properties */
+  --lg-blur-radius: 24px;
+  --lg-blur-radius-strong: 32px;
+  --lg-blur-radius-subtle: 20px;
+  
+  /* Specular Highlights */
+  --lg-specular-opacity: 0.12;
+  --lg-specular-opacity-strong: 0.18;
+  --lg-specular-opacity-subtle: 0.08;
+  
+  /* Dynamic Tint */
+  --lg-tint-opacity: 0.06;
+  --lg-tint-opacity-strong: 0.10;
+  --lg-tint-opacity-subtle: 0.03;
+  
+  /* Depth & Elevation */
+  --lg-shadow-blur: 32px;
+  --lg-shadow-blur-strong: 48px;
+  --lg-shadow-blur-subtle: 24px;
+  
+  /* Border Radii */
+  --lg-radius-xs: 8px;
+  --lg-radius-sm: 12px;
+  --lg-radius-md: 16px;
+  --lg-radius-lg: 24px;
+  --lg-radius-xl: 32px;
+  --lg-radius-2xl: 48px;
+  --lg-radius-full: 9999px;
+  
+  /* Performance Constraints */
+  --lg-max-overlapping: 3;
+  --lg-gpu-optimized: true;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY TOKENS (Canva Web Design Principles)
+   ========================================================================== */
+
+:root {
+  /* Font Families - Web Safe + Google Fonts */
+  --font-family-display: 'Tomorrow', 'Arial', sans-serif;
+  --font-family-body: 'Montserrat', 'Helvetica', sans-serif;
+  --font-family-ui: 'Rubik', 'Arial', sans-serif;
+  
+  /* Fluid Typography Scale (clamp) */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-3xl: clamp(2rem, 1.7rem + 1.5vw, 2.5rem);
+  --font-size-4xl: clamp(2.5rem, 2.1rem + 2vw, 3rem);
+  --font-size-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --font-size-6xl: clamp(4rem, 3.2rem + 4vw, 6rem);
+  --font-size-7xl: clamp(5rem, 4rem + 5vw, 7rem);
+  --font-size-8xl: clamp(6rem, 4.8rem + 6vw, 8rem);
+  
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* ==========================================================================
+   SPACING TOKENS (8pt Grid System)
+   ========================================================================== */
+
+:root {
+  --space-0: 0px;
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+  --space-32: 8rem;    /* 128px */
+  --space-40: 10rem;   /* 160px */
+  --space-48: 12rem;   /* 192px */
+  --space-56: 14rem;   /* 224px */
+  --space-64: 16rem;   /* 256px */
+}
+
+/* ==========================================================================
+   COLOR TOKENS (Semantic Palette)
+   ========================================================================== */
+
+:root {
+  /* Primary Brand Colors */
+  --color-primary-50: #e6fffe;
+  --color-primary-100: #b3fffd;
+  --color-primary-200: #80fffc;
+  --color-primary-300: #4dfffb;
+  --color-primary-400: #1afffa;
+  --color-primary-500: #00e6e6;
+  --color-primary-600: #00c2cb;
+  --color-primary-700: #0099a3;
+  --color-primary-800: #00707a;
+  --color-primary-900: #004752;
+  
+  /* Secondary Brand Colors */
+  --color-secondary-50: #e6fff0;
+  --color-secondary-100: #b3ffd1;
+  --color-secondary-200: #80ffb2;
+  --color-secondary-300: #4dff93;
+  --color-secondary-400: #1aff74;
+  --color-secondary-500: #00e655;
+  --color-secondary-600: #04d150;
+  --color-secondary-700: #00a83e;
+  --color-secondary-800: #007f2c;
+  --color-secondary-900: #00561a;
+  
+  /* Neutral Colors */
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f1f3f4;
+  --color-neutral-200: #e8eaed;
+  --color-neutral-300: #dadce0;
+  --color-neutral-400: #bdc1c6;
+  --color-neutral-500: #9aa0a6;
+  --color-neutral-600: #80868b;
+  --color-neutral-700: #5f6368;
+  --color-neutral-800: #3c4043;
+  --color-neutral-900: #202124;
+  
+  /* Semantic Colors */
+  --color-success: var(--color-secondary-600);
+  --color-warning: #ffa300;
+  --color-error: #dc3545;
+  --color-info: var(--color-primary-600);
+  
+  /* Background Colors */
+  --color-bg-primary: #120458;
+  --color-bg-secondary: #230329;
+  --color-bg-tertiary: #1a0a3a;
+  
+  /* Additional Brand Colors */
+  --color-purple: #c521e0;
+  --color-pink: #e859b8;
+  --color-orange: #ffa300;
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.9);
+  --color-text-tertiary: rgba(255, 255, 255, 0.7);
+  --color-text-disabled: rgba(255, 255, 255, 0.5);
+  
+  /* Surface Colors */
+  --color-surface-primary: rgba(255, 255, 255, 0.12);
+  --color-surface-secondary: rgba(255, 255, 255, 0.08);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.04);
+}
+
+/* ==========================================================================
+   ELEVATION & SHADOW TOKENS
+   ========================================================================== */
+
+:root {
+  /* Elevation Levels */
+  --elevation-0: none;
+  --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --elevation-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --elevation-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --elevation-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --elevation-5: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  
+  /* Liquid Glass Specific Shadows */
+  --lg-shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.37);
+  --lg-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --lg-shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   ANIMATION & TRANSITION TOKENS
+   ========================================================================== */
+
+:root {
+  /* Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Duration Scale */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Animation Delays */
+  --delay-0: 0ms;
+  --delay-100: 100ms;
+  --delay-200: 200ms;
+  --delay-300: 300ms;
+  --delay-500: 500ms;
+  --delay-700: 700ms;
+  --delay-1000: 1000ms;
+}
+
+/* ==========================================================================
+   LAYOUT TOKENS (F/Z Pattern Support)
+   ========================================================================== */
+
+:root {
+  /* Container Max Widths */
+  --container-xs: 20rem;   /* 320px */
+  --container-sm: 24rem;   /* 384px */
+  --container-md: 28rem;   /* 448px */
+  --container-lg: 32rem;   /* 512px */
+  --container-xl: 36rem;   /* 576px */
+  --container-2xl: 42rem;  /* 672px */
+  --container-3xl: 48rem;  /* 768px */
+  --container-4xl: 56rem;  /* 896px */
+  --container-5xl: 64rem;  /* 1024px */
+  --container-6xl: 72rem;  /* 1152px */
+  --container-7xl: 80rem;  /* 1280px */
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY TOKENS (WCAG-AA Compliance)
+   ========================================================================== */
+
+:root {
+  /* Focus Ring */
+  --focus-ring-color: var(--color-primary-600);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+  
+  /* Reduced Motion */
+  --motion-safe: auto;
+  --motion-reduce: none;
+  
+  /* High Contrast Mode */
+  --high-contrast: high-contrast;
+  --prefers-contrast: high;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+:root {
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ==========================================================================
+   PERFORMANCE CONSTRAINTS
+   ========================================================================== */
+
+:root {
+  /* Liquid Glass Performance */
+  --lg-max-backdrop-filters: 3;
+  --lg-gpu-acceleration: true;
+  --lg-fallback-opacity: 0.95;
+  
+  /* Animation Performance */
+  --animation-will-change: auto;
+  --animation-transform: translateZ(0);
+}
+
+/* ==========================================================================
+   MEDIA QUERY MIXINS (CSS Custom Properties)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-75: 0ms;
+    --duration-100: 0ms;
+    --duration-150: 0ms;
+    --duration-200: 0ms;
+    --duration-300: 0ms;
+    --duration-500: 0ms;
+    --duration-700: 0ms;
+    --duration-1000: 0ms;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --lg-specular-opacity: 0.95;
+    --lg-tint-opacity: 0.95;
+    --lg-fallback-opacity: 1;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-surface-primary: rgba(255, 255, 255, 0.95);
+    --color-surface-secondary: rgba(255, 255, 255, 0.9);
+    --color-surface-tertiary: rgba(255, 255, 255, 0.85);
+  }
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://johnjohnw.github.io/QUTLITS/sitemap.xml
+

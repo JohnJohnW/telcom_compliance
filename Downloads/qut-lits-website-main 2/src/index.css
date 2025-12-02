@@ -1,0 +1,624 @@
+/* ==========================================================================
+   QUT LITS Design System - Main Stylesheet
+   ========================================================================== */
+
+/* Import Design System */
+@import url('./ui/tokens/design-tokens.css');
+@import url('./ui/styles/utilities.css');
+
+/* Import Google Fonts with display=swap for better performance */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Preload critical fonts */
+@font-face {
+  font-family: 'Rubik';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tomorrow';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+}
+
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+html, body, #root { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbar but maintain scroll functionality - Comprehensive approach */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+#root {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+#root::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+/* Hide scrollbars on all elements */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+/* Ensure no horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Force hide scrollbars on specific elements that commonly cause issues */
+div, section, main, aside, article {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+div::-webkit-scrollbar,
+section::-webkit-scrollbar,
+main::-webkit-scrollbar,
+aside::-webkit-scrollbar,
+article::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* ==========================================================================
+   BACKDROP BLUR UTILITIES
+   ========================================================================== */
+
+/* Ensure backdrop-blur classes work properly */
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+.backdrop-blur-2xl {
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+}
+
+.backdrop-blur-3xl {
+  -webkit-backdrop-filter: blur(64px);
+  backdrop-filter: blur(64px);
+}
+
+:root { 
+  color-scheme: dark; 
+}
+
+/* Force dark theme always */
+html {
+  color-scheme: dark !important;
+}
+
+html[data-theme="dark"],
+html.dark {
+  color-scheme: dark !important;
+}
+
+/* Override any light theme styles */
+html[data-theme="light"],
+html.light {
+  color-scheme: dark !important;
+}
+
+/* Ensure background stays dark */
+body {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-normal);
+}
+
+/* ==========================================================================
+   LIQUID GLASS EFFECTS (Apple HIG Materials)
+   ========================================================================== */
+
+/* Legacy class names for backward compatibility */
+.liquid-glass {
+  @apply lg-surface;
+}
+
+.liquid-glass-strong {
+  @apply lg-surface-strong;
+}
+
+.glass-card {
+  @apply lg-surface-subtle;
+}
+
+.glass {
+  @apply lg-surface-subtle;
+}
+
+.glass-strong {
+  @apply lg-surface;
+}
+
+/* ==========================================================================
+   ANIMATIONS & TRANSITIONS
+   ========================================================================== */
+
+/* Loading Skeleton Animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+/* Micro-interaction: Pulse on focus */
+@keyframes pulse-focus {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 194, 203, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(0, 194, 203, 0);
+  }
+}
+
+.focus-pulse:focus {
+  animation: pulse-focus 2s ease-in-out infinite;
+}
+
+/* Skip to main content link for accessibility */
+.skip-to-main {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, top 0.2s;
+}
+
+.skip-to-main:focus {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-8px) rotate(0.5deg); 
+  }
+  50% { 
+    transform: translateY(-12px) rotate(0deg); 
+  }
+  75% { 
+    transform: translateY(-6px) rotate(-0.5deg); 
+  }
+}
+
+.float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.float-delay-1 {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.float-delay-2 {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.float-delay-3 {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Liquid Morphing Animation */
+@keyframes liquid-morph {
+  0%, 100% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+  }
+  25% { 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; 
+  }
+  50% { 
+    border-radius: 50% 60% 30% 60% / 60% 40% 60% 40%; 
+  }
+  75% { 
+    border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; 
+  }
+}
+
+.liquid-morph {
+  animation: liquid-morph 12s ease-in-out infinite;
+}
+
+/* Liquid Background Animation */
+@keyframes liquid-bg {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateX(10px) translateY(-10px) rotate(1deg); 
+  }
+  50% { 
+    transform: translateX(-5px) translateY(5px) rotate(-1deg); 
+  }
+  75% { 
+    transform: translateX(15px) translateY(-5px) rotate(0.5deg); 
+  }
+}
+
+.liquid-bg {
+  animation: liquid-bg 20s ease-in-out infinite;
+}
+
+/* Morphing Border Animation */
+@keyframes morph-border {
+  0%, 100% { 
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+  }
+  25% { 
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; 
+  }
+  50% { 
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; 
+  }
+  75% { 
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; 
+  }
+}
+
+.morph-border {
+  animation: morph-border 15s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ENHANCED EFFECTS
+   ========================================================================== */
+
+/* Glow Effects */
+.glow-primary {
+  box-shadow: 
+    0 0 20px rgba(0, 194, 203, 0.3),
+    0 0 40px rgba(0, 194, 203, 0.1),
+    0 0 60px rgba(0, 194, 203, 0.05);
+}
+
+.glow-purple {
+  box-shadow: 
+    0 0 20px rgba(197, 33, 224, 0.3),
+    0 0 40px rgba(197, 33, 224, 0.1),
+    0 0 60px rgba(197, 33, 224, 0.05);
+}
+
+.glow-secondary {
+  box-shadow: 
+    0 0 20px rgba(4, 209, 80, 0.3),
+    0 0 40px rgba(4, 209, 80, 0.1),
+    0 0 60px rgba(4, 209, 80, 0.05);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.hover-lift::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.hover-lift:hover::after {
+  opacity: 1;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08), 
+    rgba(255, 255, 255, 0.03));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.card-hover:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   GRADIENT TEXT & SPECIAL EFFECTS
+   ========================================================================== */
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.gradient-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(8px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.gradient-text-secondary {
+  background: linear-gradient(135deg, var(--color-secondary-600), var(--color-primary-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==========================================================================
+   BUTTON STYLES
+   ========================================================================== */
+
+/* Enhanced Button Animations */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.25), 
+    transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 15px 35px rgba(0, 194, 203, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   TEXT SELECTION & FOCUS
+   ========================================================================== */
+
+/* Text Selection */
+::selection {
+  background: rgba(0, 194, 203, 0.4);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(0, 194, 203, 0.4);
+  color: white;
+}
+
+/* Focus States */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(0, 194, 203, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Mobile First Approach */
+@media (max-width: 640px) {
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize backdrop filters */
+@media (prefers-reduced-transparency: reduce) {
+  .lg-surface,
+  .lg-surface-strong,
+  .lg-surface-subtle {
+    background: var(--color-bg-tertiary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .lg-surface,
+  .lg-surface-strong,
+  .lg-surface-subtle {
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-text-primary);
+  }
+}
