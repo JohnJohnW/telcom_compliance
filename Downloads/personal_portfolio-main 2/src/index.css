@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+:root { color-scheme: dark; }
+
+/* Force dark theme always */
+html {
+  color-scheme: dark !important;
+}
+
+html[data-theme="dark"],
+html.dark {
+  color-scheme: dark !important;
+}
+
+/* Override any light theme styles */
+html[data-theme="light"],
+html.light {
+  color-scheme: dark !important;
+}
+
+/* Ensure background stays dark */
+body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Performance optimizations */
+* {
+  /* Prevent layout thrashing */
+  box-sizing: border-box;
+}
+
+/* GPU acceleration for animated elements */
+.group {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+/* Optimise backdrop-blur performance */
+[class*="backdrop-blur"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimise transitions - only animate transform and opacity (GPU accelerated) */
+.transition-transform {
+  will-change: transform;
+}
+
+/* Section containment for better rendering */
+section {
+  contain: layout style paint;
+}
