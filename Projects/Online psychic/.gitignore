@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore other projects in the repository
+../Downloads/
+../Projects/paw-or-naw/
+../Projects/qut-lits-website/
+../Projects/personal_portfolio/
