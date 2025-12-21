@@ -1,0 +1,137 @@
+'use client'
+
+import { useRef, useState, useEffect } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Mesh, Group } from 'three'
+
+function checkWebGLSupport(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    const canvas = document.createElement('canvas')
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+    if (!gl || !('createShader' in gl)) return false
+    const shader = (gl as WebGLRenderingContext).createShader((gl as WebGLRenderingContext).VERTEX_SHADER)
+    if (!shader) return false
+    ;(gl as WebGLRenderingContext).deleteShader(shader)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function TarotCardMesh() {
+  const card1Ref = useRef<Mesh>(null)
+  const card2Ref = useRef<Mesh>(null)
+  const card3Ref = useRef<Mesh>(null)
+  const groupRef = useRef<Group>(null)
+
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.2
+    }
+    if (card1Ref.current) {
+      card1Ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
+      card1Ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.1
+    }
+    if (card2Ref.current) {
+      card2Ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.5 + 1) * 0.1
+      card2Ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.8 + 1) * 0.1
+    }
+    if (card3Ref.current) {
+      card3Ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.5 + 2) * 0.1
+      card3Ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.8 + 2) * 0.1
+    }
+  })
+
+  return (
+    <group ref={groupRef}>
+      {/* First card */}
+      <mesh ref={card1Ref} position={[-0.3, 0, 0]} rotation={[0, 0, -0.2]}>
+        <boxGeometry args={[0.4, 0.6, 0.05]} />
+        <meshStandardMaterial
+          color="#6d28d9"
+          emissive="#4c1d95"
+          emissiveIntensity={0.4}
+          metalness={0.7}
+          roughness={0.3}
+        />
+      </mesh>
+      {/* Second card */}
+      <mesh ref={card2Ref} position={[0, 0, 0.1]} rotation={[0, 0, 0]}>
+        <boxGeometry args={[0.4, 0.6, 0.05]} />
+        <meshStandardMaterial
+          color="#7c3aed"
+          emissive="#5b21b6"
+          emissiveIntensity={0.5}
+          metalness={0.7}
+          roughness={0.3}
+        />
+      </mesh>
+      {/* Third card */}
+      <mesh ref={card3Ref} position={[0.3, 0, 0]} rotation={[0, 0, 0.2]}>
+        <boxGeometry args={[0.4, 0.6, 0.05]} />
+        <meshStandardMaterial
+          color="#6d28d9"
+          emissive="#4c1d95"
+          emissiveIntensity={0.4}
+          metalness={0.7}
+          roughness={0.3}
+        />
+      </mesh>
+    </group>
+  )
+}
+
+interface Tarot3DProps {
+  className?: string
+}
+
+export function Tarot3D({ className = '' }: Tarot3DProps) {
+  const [webglSupported, setWebglSupported] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    setWebglSupported(checkWebGLSupport())
+  }, [])
+
+  if (!webglSupported || hasError) {
+    return null
+  }
+
+  return (
+    <div className={className} style={{ width: '100%', height: '100%' }}>
+      <Canvas
+        camera={{ position: [0, 0, 3], fov: 50 }}
+        gl={{ 
+          alpha: true, 
+          antialias: true,
+          powerPreference: 'high-performance',
+          failIfMajorPerformanceCaveat: false,
+        }}
+        onCreated={({ gl }) => {
+          try {
+            gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            if (gl.domElement) {
+              gl.domElement.addEventListener('webglcontextlost', () => setHasError(true))
+              gl.domElement.addEventListener('webglcontextrestored', () => setHasError(false))
+            }
+          } catch (error) {
+            console.error('Canvas setup error:', error)
+            setHasError(true)
+          }
+        }}
+        onError={(error) => {
+          console.error('Canvas error:', error)
+          setHasError(true)
+        }}
+        style={{ background: 'transparent' }}
+      >
+        <ambientLight intensity={0.5} />
+        <pointLight position={[5, 5, 5]} intensity={1} color="#a855f7" />
+        <pointLight position={[-5, -5, -5]} intensity={0.5} color="#6d28d9" />
+        <TarotCardMesh />
+      </Canvas>
+    </div>
+  )
+}
+

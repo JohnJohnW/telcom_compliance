@@ -1,0 +1,1266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0815;
+  --foreground: #ede9fe;
+  --mystic-purple: #6d28d9;
+  --cosmic-purple: #5b21b6;
+  --deep-purple: #4c1d95;
+  --spiritual-purple: #581c87;
+  --calming-purple: #7c3aed;
+  --celestial-gold: #facc15;
+  --widget-height: 100px; /* Default widget height, will be updated dynamically */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #faf5ff;
+    --foreground: #1e1b4b;
+  }
+}
+
+body {
+  color: var(--foreground, #ede9fe);
+  background: var(--background, #0a0815);
+  font-family: 'Inter', system-ui, sans-serif;
+  background-image: 
+    radial-gradient(ellipse at top, rgba(93, 51, 234, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(76, 29, 149, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(88, 28, 135, 0.1) 0%, transparent 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  background-color: #0a0815;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(93, 51, 234, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(76, 29, 149, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(88, 28, 135, 0.04) 0%, transparent 60%);
+  animation: pulse-glow 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-mystical {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  
+  .text-gradient-mystic {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-cosmic {
+    background: linear-gradient(135deg, #6d28d9 0%, #581c87 50%, #4c1d95 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Light gradient for headings on purple background */
+  .text-gradient-light {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #facc15 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Softer light gradient */
+  .text-gradient-soft-light {
+    background: linear-gradient(135deg, #f5f3ff 0%, #e9d5ff 50%, #ddd6fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Soft lavender-gold gradient - subtle and elegant */
+  .text-gradient-cream-gold {
+    background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 50%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #8b5cf6, #a855f7) 1;
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.15), 0 0 30px rgba(139, 92, 246, 0.05);
+  }
+  
+  .sparkle {
+    position: relative;
+  }
+  
+  .sparkle::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.2em;
+    animation: sparkle 4s ease-in-out infinite;
+  }
+  
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+  
+  .mystic-card {
+    background: rgba(30, 27, 75, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mystic-card:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 6px 24px rgba(139, 92, 246, 0.1);
+    transform: translateY(-1px);
+    transition: all 0.5s ease;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0.5; 
+      transform: scale(1); 
+    }
+    50% { 
+      opacity: 0.8; 
+      transform: scale(1.1); 
+    }
+  }
+  
+  .animate-twinkle {
+    animation: twinkle 5s ease-in-out infinite;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .delay-700 {
+    animation-delay: 0.7s;
+  }
+  
+  /* Spiritual background animations - calm and gentle */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    33% {
+      transform: translateY(-8px) translateX(4px);
+    }
+    66% {
+      transform: translateY(4px) translateX(-4px);
+    }
+  }
+  
+  /* Floating particle animations - Spiritual & Flowing */
+  @keyframes particle-float-up {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    20% {
+      transform: translateY(-20px) translateX(5px) scale(1.08);
+      opacity: 0.4;
+    }
+    40% {
+      transform: translateY(-35px) translateX(3px) scale(1.12);
+      opacity: 0.5;
+    }
+    60% {
+      transform: translateY(-45px) translateX(-2px) scale(1.1);
+      opacity: 0.55;
+    }
+    80% {
+      transform: translateY(-25px) translateX(-3px) scale(1.06);
+      opacity: 0.4;
+    }
+  }
+  
+  @keyframes particle-float-down {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(30px) translateX(-8px) scale(1.15);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(50px) translateX(-5px) scale(1.1);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translateY(30px) translateX(5px) scale(1.05);
+      opacity: 0.4;
+    }
+  }
+  
+  @keyframes particle-float-left {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(12px) translateX(-35px) scale(1.15);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(10px) translateX(-50px) scale(1.1);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translateY(-8px) translateX(-35px) scale(1.05);
+      opacity: 0.4;
+    }
+  }
+  
+  @keyframes particle-float-right {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(-12px) translateX(35px) scale(1.15);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-10px) translateX(50px) scale(1.1);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translateY(8px) translateX(35px) scale(1.05);
+      opacity: 0.4;
+    }
+  }
+  
+  @keyframes particle-diagonal {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(-20px) translateX(20px) scale(1.15);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-30px) translateX(30px) scale(1.1);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translateY(-15px) translateX(15px) scale(1.05);
+      opacity: 0.4;
+    }
+  }
+  
+  /* Star animations - Spiritual twinkling & gentle movement */
+  @keyframes star-float-up {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+      opacity: 0.4;
+    }
+    15% {
+      transform: translateY(-15px) translateX(8px) rotate(45deg) scale(1.08);
+      opacity: 0.55;
+    }
+    30% {
+      transform: translateY(-28px) translateX(-5px) rotate(90deg) scale(1.1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-40px) translateX(-8px) rotate(135deg) scale(1.06);
+      opacity: 0.65;
+    }
+    70% {
+      transform: translateY(-35px) translateX(3px) rotate(180deg) scale(1.08);
+      opacity: 0.75;
+    }
+    85% {
+      transform: translateY(-20px) translateX(5px) rotate(225deg) scale(1.05);
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes star-float-down {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+      opacity: 0.4;
+    }
+    20% {
+      transform: translateY(20px) translateX(-12px) rotate(-72deg) scale(1.12);
+      opacity: 0.6;
+    }
+    40% {
+      transform: translateY(40px) translateX(8px) rotate(-144deg) scale(1.08);
+      opacity: 0.8;
+    }
+    60% {
+      transform: translateY(60px) translateX(10px) rotate(-216deg) scale(1.05);
+      opacity: 0.5;
+    }
+    80% {
+      transform: translateY(30px) translateX(-5px) rotate(-288deg) scale(1.1);
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes star-diagonal {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(-30px) translateX(30px) rotate(90deg) scale(1.15);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-40px) translateX(40px) rotate(180deg) scale(1.1);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-20px) translateX(20px) rotate(270deg) scale(1.05);
+      opacity: 0.5;
+    }
+  }
+  
+  .particle-float-up {
+    animation: particle-float-up 20s ease-in-out infinite;
+  }
+  
+  .particle-float-down {
+    animation: particle-float-down 22s ease-in-out infinite;
+  }
+  
+  .particle-float-left {
+    animation: particle-float-left 18s ease-in-out infinite;
+  }
+  
+  .particle-float-right {
+    animation: particle-float-right 21s ease-in-out infinite;
+  }
+  
+  .particle-diagonal {
+    animation: particle-diagonal 19s ease-in-out infinite;
+  }
+  
+  .star-float-up {
+    animation: star-float-up 25s ease-in-out infinite;
+  }
+  
+  .star-float-down {
+    animation: star-float-down 27s ease-in-out infinite;
+  }
+  
+  .star-diagonal {
+    animation: star-diagonal 23s ease-in-out infinite;
+  }
+  
+  /* Subtle shimmer animation */
+  @keyframes shimmer-subtle {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .animate-shimmer-subtle {
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(168, 85, 247, 0.1),
+      transparent
+    );
+    animation: shimmer-subtle 8s ease-in-out infinite;
+  }
+  
+  /* Enhanced purple glow effect */
+  .glow-effect-purple {
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(139, 92, 246, 0.2),
+      0 0 60px rgba(139, 92, 246, 0.1);
+  }
+  
+  .glow-effect-purple:hover {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.4),
+      0 0 60px rgba(139, 92, 246, 0.3),
+      0 0 90px rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Enhanced mystic card */
+  .mystic-card-enhanced {
+    background: rgba(20, 15, 45, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(93, 51, 234, 0.2);
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(93, 51, 234, 0.08);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mystic-card-enhanced:hover {
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 
+      0 8px 30px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(93, 51, 234, 0.15),
+      inset 0 0 20px rgba(93, 51, 234, 0.05);
+    transform: translateY(-4px);
+  }
+  
+  .mystic-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.08),
+      transparent
+    );
+    transition: left 1.5s ease;
+  }
+  
+  .mystic-card-enhanced:hover::before {
+    left: 100%;
+  }
+  
+  /* Spiritual Button Styles */
+  .spiritual-button-primary {
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 50%, #4c1d95 100%);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 4px 20px rgba(93, 51, 234, 0.25),
+      0 0 30px rgba(76, 29, 149, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: button-glow 4s ease-in-out infinite;
+  }
+  
+  @keyframes button-glow {
+    0%, 100% {
+      box-shadow: 
+        0 4px 20px rgba(93, 51, 234, 0.25),
+        0 0 30px rgba(76, 29, 149, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 
+        0 4px 25px rgba(93, 51, 234, 0.35),
+        0 0 40px rgba(76, 29, 149, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+  .spiritual-button-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+  
+  .spiritual-button-primary:hover::before {
+    left: 100%;
+  }
+  
+  .spiritual-button-primary::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from 0deg, rgba(124, 58, 237, 0.4), rgba(93, 51, 234, 0.4), rgba(124, 58, 237, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .spiritual-button-primary:hover::after {
+    opacity: 1;
+    animation: border-rotate 3s linear infinite;
+  }
+  
+  @keyframes border-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spiritual-button-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+      0 10px 40px rgba(93, 51, 234, 0.4),
+      0 0 60px rgba(76, 29, 149, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: button-glow-hover 2s ease-in-out infinite;
+  }
+  
+  @keyframes button-glow-hover {
+    0%, 100% {
+      box-shadow: 
+        0 10px 40px rgba(93, 51, 234, 0.4),
+        0 0 60px rgba(76, 29, 149, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 12px 45px rgba(93, 51, 234, 0.5),
+        0 0 70px rgba(76, 29, 149, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+  }
+  
+  .spiritual-button-primary:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  .spiritual-button-primary .animate-twinkle {
+    display: inline-block;
+    animation: twinkle 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  }
+  
+  /* Spiritual Outline Button */
+  .spiritual-button-outline {
+    background: rgba(20, 15, 45, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(93, 51, 234, 0.35);
+    color: #ddd6fe;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 2px 10px rgba(93, 51, 234, 0.08),
+      inset 0 1px 0 rgba(124, 58, 237, 0.1);
+  }
+  
+  .spiritual-button-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.12),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+  
+  .spiritual-button-outline:hover::before {
+    left: 100%;
+  }
+  
+  .spiritual-button-outline::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from 0deg, rgba(124, 58, 237, 0.25), rgba(93, 51, 234, 0.25), rgba(124, 58, 237, 0.25));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .spiritual-button-outline:hover::after {
+    opacity: 1;
+    animation: border-rotate 3s linear infinite;
+  }
+  
+  .spiritual-button-outline:hover {
+    border-color: rgba(124, 58, 237, 0.6);
+    background: rgba(20, 15, 45, 0.7);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+      0 6px 25px rgba(93, 51, 234, 0.25),
+      0 0 40px rgba(76, 29, 149, 0.15),
+      inset 0 1px 0 rgba(124, 58, 237, 0.25);
+    color: #ede9fe;
+  }
+  
+  .spiritual-button-outline:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  /* Button shimmer animation */
+  @keyframes button-shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .spiritual-button-primary,
+  .spiritual-button-outline {
+    background-size: 200% 100%;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.02);
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* Slow, calming spin animations for spiritual elements */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin-slow-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 30s linear infinite;
+  }
+  
+  .animate-spin-slow-reverse {
+    animation: spin-slow-reverse 40s linear infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .animate-float {
+    animation: float 12s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 6s linear infinite;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.1),
+      transparent
+    );
+    background-size: 2000px 100%;
+  }
+  
+  /* Fade in animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1.5s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1.5s ease-out;
+  }
+  
+  /* Spiritual icon animations */
+  @keyframes sparkle-icon {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+    }
+    25% {
+      transform: scale(1.1) rotate(5deg);
+      filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.8));
+    }
+    50% {
+      transform: scale(1.05) rotate(-5deg);
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
+    }
+    75% {
+      transform: scale(1.1) rotate(3deg);
+      filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.8));
+    }
+  }
+  
+  @keyframes crystal-rotate {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
+    }
+    33% {
+      transform: rotate(120deg) scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.9));
+    }
+    66% {
+      transform: rotate(240deg) scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.9));
+    }
+  }
+  
+  @keyframes lock-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+    }
+    50% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.9));
+    }
+  }
+  
+  @keyframes scroll-shimmer {
+    0%, 100% {
+      transform: translateY(0);
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.9));
+      opacity: 1;
+    }
+  }
+  
+  @keyframes line-shimmer {
+    0%, 100% {
+      opacity: 0.5;
+      filter: drop-shadow(0 0 2px rgba(254, 243, 199, 0.5));
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px rgba(254, 243, 199, 0.9));
+    }
+  }
+  
+  @keyframes star-rotate {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+      filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8));
+    }
+    25% {
+      transform: rotate(90deg) scale(1.1);
+      filter: drop-shadow(0 0 15px rgba(251, 191, 36, 1));
+    }
+    50% {
+      transform: rotate(180deg) scale(1.05);
+      filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9));
+    }
+    75% {
+      transform: rotate(270deg) scale(1.1);
+      filter: drop-shadow(0 0 15px rgba(251, 191, 36, 1));
+    }
+  }
+  
+  @keyframes moon-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
+    }
+    50% {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.95));
+    }
+  }
+  
+  @keyframes tarot-float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+      filter: drop-shadow(0 0 8px rgba(109, 40, 217, 0.7));
+    }
+    33% {
+      transform: translateY(-3px) rotate(-2deg);
+      filter: drop-shadow(0 0 12px rgba(109, 40, 217, 0.9));
+    }
+    66% {
+      transform: translateY(-1px) rotate(2deg);
+      filter: drop-shadow(0 0 10px rgba(109, 40, 217, 0.8));
+    }
+  }
+  
+  @keyframes astrology-rotate {
+    0%, 100% {
+      transform: rotate(0deg);
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
+    }
+    50% {
+      transform: rotate(180deg);
+      filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.95));
+    }
+  }
+  
+  @keyframes love-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.7));
+    }
+    25% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.9));
+    }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 18px rgba(236, 72, 153, 1));
+    }
+    75% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.9));
+    }
+  }
+  
+  .animate-sparkle-icon {
+    animation: sparkle-icon 4s ease-in-out infinite;
+  }
+  
+  .animate-crystal-rotate {
+    animation: crystal-rotate 8s linear infinite;
+  }
+  
+  .animate-lock-pulse {
+    animation: lock-pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-scroll-shimmer {
+    animation: scroll-shimmer 4s ease-in-out infinite;
+  }
+  
+  .animate-star-rotate {
+    animation: star-rotate 6s linear infinite;
+  }
+  
+  .animate-moon-pulse {
+    animation: moon-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-tarot-float {
+    animation: tarot-float 5s ease-in-out infinite;
+  }
+  
+  .animate-astrology-rotate {
+    animation: astrology-rotate 12s linear infinite;
+  }
+  
+  .animate-love-pulse {
+    animation: love-pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-line-shimmer {
+    animation: line-shimmer 2s ease-in-out infinite;
+  }
+  
+  @keyframes orb-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.8)) drop-shadow(0 0 25px rgba(168, 85, 247, 0.6));
+    }
+    50% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 20px rgba(251, 191, 36, 1)) drop-shadow(0 0 35px rgba(168, 85, 247, 0.8));
+    }
+  }
+  
+  .animate-orb-pulse {
+    animation: orb-pulse 4s ease-in-out infinite;
+  }
+  
+  /* Enhanced mystic card hover effects */
+  .mystic-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mystic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.05),
+      transparent
+    );
+    transition: left 1s ease;
+  }
+  
+  .mystic-card:hover::before {
+    left: 100%;
+  }
+  
+  /* Fix react-icons color */
+  .hero-crystal-icon svg,
+  .hero-crystal-icon path {
+    fill: #a855f7 !important;
+    color: #a855f7 !important;
+  }
+  
+  /* Hero Crystal Ball Animations - Spiritual & Ethereal */
+  @keyframes crystal-float {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-8px) scale(1.03);
+    }
+    50% {
+      transform: translateY(-12px) scale(1.05);
+    }
+    75% {
+      transform: translateY(-6px) scale(1.02);
+    }
+  }
+  
+  @keyframes crystal-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px rgba(168,85,247,0.6)) drop-shadow(0 0 40px rgba(168,85,247,0.4)) drop-shadow(0 0 60px rgba(139,92,246,0.2));
+    }
+    33% {
+      filter: drop-shadow(0 0 25px rgba(168,85,247,0.75)) drop-shadow(0 0 50px rgba(168,85,247,0.5)) drop-shadow(0 0 80px rgba(139,92,246,0.3));
+    }
+    66% {
+      filter: drop-shadow(0 0 30px rgba(168,85,247,0.9)) drop-shadow(0 0 60px rgba(168,85,247,0.6)) drop-shadow(0 0 100px rgba(139,92,246,0.4));
+    }
+  }
+  
+  @keyframes crystal-breath {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 0.95;
+    }
+  }
+  
+  /* Background orb floating animations - Spiritual & Ethereal */
+  @keyframes orb-float-1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.3;
+    }
+    20% {
+      transform: translate(15px, -20px) scale(1.05) rotate(1deg);
+      opacity: 0.35;
+    }
+    40% {
+      transform: translate(25px, -35px) scale(1.08) rotate(0deg);
+      opacity: 0.4;
+    }
+    60% {
+      transform: translate(20px, -30px) scale(1.06) rotate(-1deg);
+      opacity: 0.38;
+    }
+    80% {
+      transform: translate(-10px, 15px) scale(0.98) rotate(0.5deg);
+      opacity: 0.32;
+    }
+  }
+  
+  @keyframes orb-float-2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(-20px, 15px) scale(1.06) rotate(-1deg);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translate(-35px, 25px) scale(1.1) rotate(0deg);
+      opacity: 0.4;
+    }
+    75% {
+      transform: translate(15px, -20px) scale(1.02) rotate(1deg);
+      opacity: 0.33;
+    }
+  }
+  
+  @keyframes orb-float-3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.3;
+    }
+    30% {
+      transform: translate(12px, 18px) scale(1.04) rotate(0.5deg);
+      opacity: 0.36;
+    }
+    60% {
+      transform: translate(18px, 22px) scale(1.06) rotate(0deg);
+      opacity: 0.4;
+    }
+    90% {
+      transform: translate(8px, 12px) scale(1.02) rotate(-0.5deg);
+      opacity: 0.34;
+    }
+  }
+  
+  @keyframes orb-float-4 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.25;
+    }
+    35% {
+      transform: translate(-18px, -12px) scale(1.05) rotate(-0.8deg);
+      opacity: 0.3;
+    }
+    70% {
+      transform: translate(-25px, -18px) scale(1.08) rotate(0deg);
+      opacity: 0.35;
+    }
+  }
+  
+  @keyframes orb-float-5 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.25;
+    }
+    40% {
+      transform: translate(22px, 12px) scale(1.05) rotate(0.8deg);
+      opacity: 0.3;
+    }
+    80% {
+      transform: translate(30px, 18px) scale(1.07) rotate(0deg);
+      opacity: 0.35;
+    }
+  }
+  
+  .animate-orb-float-1 {
+    animation: orb-float-1 30s ease-in-out infinite;
+  }
+  
+  .animate-orb-float-2 {
+    animation: orb-float-2 35s ease-in-out infinite;
+  }
+  
+  .animate-orb-float-3 {
+    animation: orb-float-3 28s ease-in-out infinite;
+  }
+  
+  .animate-orb-float-4 {
+    animation: orb-float-4 32s ease-in-out infinite;
+  }
+  
+  .animate-orb-float-5 {
+    animation: orb-float-5 34s ease-in-out infinite;
+  }
+  
+  /* Enhanced mandala animations - Spiritual & Meditative */
+  .mandala-1 {
+    animation: spin-slow 50s linear infinite, mandala-pulse 12s ease-in-out infinite, mandala-breathe 8s ease-in-out infinite;
+  }
+  
+  .mandala-2 {
+    animation: spin-slow-reverse 60s linear infinite, mandala-pulse 14s ease-in-out infinite, mandala-breathe 10s ease-in-out infinite;
+  }
+  
+  .mandala-3 {
+    animation: spin-slow 55s linear infinite, mandala-pulse 16s ease-in-out infinite, mandala-breathe 9s ease-in-out infinite;
+  }
+  
+  .mandala-4 {
+    animation: spin-slow-reverse 65s linear infinite, mandala-pulse 13s ease-in-out infinite, mandala-breathe 11s ease-in-out infinite;
+  }
+  
+  @keyframes mandala-pulse {
+    0%, 100% {
+      opacity: 0.03;
+    }
+    50% {
+      opacity: 0.08;
+    }
+  }
+  
+  @keyframes mandala-breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes crystal-glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.3);
+    }
+  }
+  
+  /* Spiritual wave animations */
+  @keyframes spiritual-wave {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(-15px) translateX(10px);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-25px) translateX(-5px);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translateY(-10px) translateX(8px);
+      opacity: 0.55;
+    }
+  }
+  
+  @keyframes ethereal-drift {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.3;
+    }
+    33% {
+      transform: translate(20px, -15px) rotate(2deg);
+      opacity: 0.4;
+    }
+    66% {
+      transform: translate(-15px, 20px) rotate(-2deg);
+      opacity: 0.35;
+    }
+  }
+  
+  .hero-crystal-emoji {
+    animation: crystal-float 8s ease-in-out infinite, crystal-glow 4s ease-in-out infinite, crystal-breath 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(168,85,247,0.6)) drop-shadow(0 0 40px rgba(168,85,247,0.4)) drop-shadow(0 0 60px rgba(139,92,246,0.2));
+  }
+  
+  
+  .hero-crystal-glow {
+    background: radial-gradient(circle, rgba(168,85,247,0.6) 0%, transparent 70%);
+    animation: crystal-glow-pulse 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  /* Navbar Logo Icon */
+  .navbar-logo-icon {
+    filter: drop-shadow(0 0 8px rgba(168,85,247,0.5));
+    animation: navbar-logo-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes navbar-logo-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 8px rgba(168,85,247,0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 12px rgba(168,85,247,0.8));
+    }
+  }
+}
+
