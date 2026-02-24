@@ -1,15 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Navy rounded square background -->
-  <rect width="32" height="32" rx="7" fill="#1B3A6B"/>
-  <!-- Signal tower / antenna icon -->
-  <!-- Vertical mast -->
-  <rect x="15.5" y="12" width="1.5" height="12" rx="0.75" fill="white" opacity="0.9"/>
-  <!-- Top tip -->
-  <rect x="15.5" y="9" width="1.5" height="3" rx="0.75" fill="white"/>
-  <!-- Arc 1 — small -->
-  <path d="M13 11.5 C13 9.8 14.3 8.5 16 8.5 C17.7 8.5 19 9.8 19 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.9"/>
-  <!-- Arc 2 — medium -->
-  <path d="M11 13.5 C11 10 13.2 7.5 16 7.5 C18.8 7.5 21 10 21 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
-  <!-- "TC" text baseline -->
-  <text x="8" y="26" font-family="'Inter', 'Arial', sans-serif" font-size="8" font-weight="700" fill="white" letter-spacing="0.5">TC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#1B3A6B"/>
+  <text
+    x="16" y="23"
+    text-anchor="middle"
+    font-family="'Arial Black', Arial, sans-serif"
+    font-size="20"
+    font-weight="900"
+    fill="white"
+    letter-spacing="-1"
+  >T</text>
 </svg>

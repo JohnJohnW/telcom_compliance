@@ -23,8 +23,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group" onClick={() => setMobileOpen(false)}>
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-navy-900 text-white font-bold text-sm select-none group-hover:bg-navy-700 transition-colors">
-              TC
+            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-navy-900 text-white font-black text-lg select-none tracking-tight group-hover:bg-navy-700 transition-colors">
+              T
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-bold text-navy-900 text-base tracking-tight">TelcoComply</span>
