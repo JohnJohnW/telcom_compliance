@@ -1,10 +1,18 @@
 {
-  "name": "PawOrNaw",
-  "short_name": "PawOrNaw",
-  "start_url": "/",
+  "name": "TelcoComply",
+  "short_name": "TelcoComply",
+  "description": "Australian Telecommunications Act Compliance Reference Tool",
+  "theme_color": "#1B3A6B",
+  "background_color": "#FFFFFF",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "icons": []
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
 }
-

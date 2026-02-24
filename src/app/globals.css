@@ -1,74 +1,160 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f5f5f7; /* Apple light gray background */
-  --foreground: #1d1d1f;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Brand Colours */
+  --color-navy-950: #0d1f3c;
+  --color-navy-900: #1b3a6b;
+  --color-navy-800: #1e4380;
+  --color-navy-700: #254d8e;
+  --color-navy-600: #2d5ea8;
+  --color-steel-700: #1a5ba3;
+  --color-steel-600: #2e6bb5;
+  --color-steel-500: #3d7fc9;
+  --color-steel-200: #bfdbf7;
+  --color-steel-100: #ebf3fb;
+  --color-steel-50: #f4f8fe;
+
+  /* Status / Semantic Colours */
+  --color-teal-700: #0a7c6e;
+  --color-teal-600: #0d9488;
+  --color-teal-100: #ccfbf1;
+  --color-teal-50: #f0fdfa;
+  --color-amber-600: #d97706;
+  --color-amber-500: #f59e0b;
+  --color-amber-100: #fef3c7;
+  --color-amber-50: #fffbeb;
+  --color-red-600: #dc2626;
+  --color-red-100: #fee2e2;
+  --color-red-50: #fef2f2;
+
+  /* Neutrals */
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-slate-50: #f8fafc;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 }
 
-html, body {
-  height: 100%;
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+html {
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism Utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+body {
+  background-color: var(--color-slate-50);
+  color: var(--color-slate-900);
+  font-family: var(--font-sans);
+  line-height: 1.6;
 }
 
-.glass-dark {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+:focus-visible {
+  outline: 2px solid var(--color-steel-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
-/* Apple-style Inputs */
-.apple-input {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
-  border-radius: 12px;
-  transition: all 0.2s ease;
+a {
+  color: var(--color-steel-600);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-.apple-input:focus {
-  background: rgba(0, 0, 0, 0.08);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.5);
+@layer components {
+  .prose-telco {
+    max-width: 72ch;
+    color: var(--color-slate-800);
+  }
+  .prose-telco h2 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-navy-900);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-steel-100);
+  }
+  .prose-telco h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-slate-800);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-telco p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  .prose-telco ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.25rem;
+  }
+  .prose-telco ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-telco ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-steel-500);
+  }
+
+  .section-card {
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .section-card:hover {
+    box-shadow: 0 8px 24px -4px rgba(27, 58, 107, 0.12);
+    transform: translateY(-2px);
+  }
 }
 
-/* Apple-style Buttons */
-.apple-btn {
-  background: #0071e3;
-  color: white;
-  border-radius: 999px;
-  transition: transform 0.1s ease, background-color 0.2s ease;
-}
-
-.apple-btn:active {
-  transform: scale(0.98);
-  background: #0077ED;
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: white;
+    font-size: 12pt;
+  }
+  .print-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }

@@ -1,26 +1,32 @@
-import { getDogsForFeed } from './actions'
-import { Feed } from '@/components/feed'
-import Link from 'next/link'
-import { MessageCircle, User } from 'lucide-react'
+import { HeroSection } from '@/components/home/HeroSection';
+import { StatsBar } from '@/components/home/StatsBar';
+import { SectionCard } from '@/components/home/SectionCard';
+import { CTABanner } from '@/components/home/CTABanner';
+import { COMPLIANCE_SECTIONS } from '@/data/sections';
 
-export default async function Home() {
-  // Bypass auth check for demo
-  const dogs = await getDogsForFeed()
-
+export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f2f2f7]">
-        <header className="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center shadow-sm backdrop-blur-xl bg-white/70 supports-[backdrop-filter]:bg-white/60">
-            <Link href="/profile" className="text-gray-500 hover:text-black transition-colors p-2 rounded-full hover:bg-black/5">
-                <User size={24} />
-            </Link>
-            <h1 className="text-xl font-semibold tracking-tight text-black">PawOrNaw</h1>
-            <Link href="/matches" className="text-gray-500 hover:text-black transition-colors p-2 rounded-full hover:bg-black/5">
-                <MessageCircle size={24} />
-            </Link>
-        </header>
-        <main className="flex-1 p-4 flex flex-col items-center pt-8 overflow-hidden">
-            <Feed initialDogs={dogs} />
-        </main>
-    </div>
-  )
+    <>
+      <HeroSection />
+      <StatsBar />
+
+      {/* Section grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold text-navy-900 mb-2">Compliance Areas</h2>
+          <p className="text-slate-500 text-base">
+            16 areas of Australian telecommunications compliance — from carrier licensing to data retention.
+            Each guide includes actionable obligations and direct references to the source legislation.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {COMPLIANCE_SECTIONS.map((section) => (
+            <SectionCard key={section.slug} section={section} />
+          ))}
+        </div>
+      </section>
+
+      <CTABanner />
+    </>
+  );
 }
